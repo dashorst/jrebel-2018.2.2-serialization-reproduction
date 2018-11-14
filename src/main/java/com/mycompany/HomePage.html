@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>Apache Wicket Quickstart</title>
+	</head>
+	<body>
+		<h1>Reproduction case for serialization bug</h1>
+		
+		<p>The button below does some destructive action that should only be called by an action of the player, not during some technicalities of some arcane framework like Wicket.</p>
+		
+		<h3>Good Scenario</h3>
+		<ol>
+			<li>Load this page (Yay! step one completed)</li>
+			<li>Refresh the page in the browser (F5)</li>
+			<li>Observe that the method is not called</li>
+		</ol>
+
+		<h3>Bad Scenario</h3>
+		<ol>
+			<li>Load this page (Yay! step one completed)</li>
+			<li>Modify some code (e.g. change <tt>System.out</tt> into <tt>System.err</tt> or vice versa)</li>
+			<li>Refresh the page in the browser (F5)</li>
+			<li>Observe that the method is actually called</li>
+		</ol>
+
+<h1>The bad button</h1>
+<pre>
+> Do you want to play a game?
+			
+1. <button wicket:id="link">Start Global Thermonuclear War</button>
+			
+		</pre>		
+	</body>
+</html>
